@@ -6,7 +6,8 @@
     "start": "ts-node-dev --respawn --transpile-only ./src/app.ts"
   },
   "dependencies": {
-    "express": "~4.16.1"
+    "express": "~4.16.1",
+    "helmet": "^5.1.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",

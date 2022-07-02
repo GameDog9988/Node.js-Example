@@ -1,7 +1,10 @@
 import express, { NextFunction, Request, Response } from "express";
 import routes from "./routes";
+import helmet from "helmet";
 
 const app = express();
+
+app.use(helmet());
 
 app.use(express.json()); // In order to actually get the body from a request
 
