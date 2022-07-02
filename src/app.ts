@@ -1,18 +1,21 @@
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
+import routes from "./routes";
 
 const app = express();
 
 app.use(express.json()); // In order to actually get the body from a request
 
-app.get("/", (req, res) => {
-  return res.send("Hello world");
-});
+const middleware =
+  ({ name }: { name: string }) =>
+  (req: Request, res: Response, next: NextFunction) => {
+    res.locals.name = name;
 
-app.post("/api/data", (req, res) => {
-  console.log(req.body);
+    next();
+  };
 
-  return res.sendStatus(200);
-});
+app.use(middleware({ name: "Alexander" }));
+
+routes(app);
 
 app.listen(3000, () => {
   console.log("Application listening at http://localhost:3000");
