@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
-function getBookHandler(
+export function getBookHandler(
   req: Request<{ bookId: string; authorId: string }>,
   res: Response,
   next: NextFunction

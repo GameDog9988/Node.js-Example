@@ -1,20 +1,11 @@
 import { Express, Request, Response, NextFunction } from "express";
+import { getBookHandler } from "./controllers/books.controller";
 function routes(app: Express) {
   async function throwsError() {
     throw new Error("Boom!");
   }
 
-  app.get(
-    "/api/books/:bookId/:authorId",
-    (
-      req: Request<{ bookId: string; authorId: string }>,
-      res: Response,
-      next: NextFunction
-    ) => {
-      console.log(res.locals.name);
-      res.send(res.locals.name);
-    }
-  );
+  app.get("/api/books/:bookId/:authorId", getBookHandler);
 
   app.get("/error", async (req: Request, res: Response) => {
     try {
