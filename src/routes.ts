@@ -1,8 +1,5 @@
 import { Express, Request, Response, NextFunction } from "express";
-import {
-  getBookHandler,
-  getKnexUserHandler,
-} from "./controllers/books.controller";
+import { getBookHandler } from "./controllers/books.controller";
 import { createUserHandler } from "./controllers/user.controller";
 
 function routes(app: Express) {
@@ -19,7 +16,7 @@ function routes(app: Express) {
     }
   });
 
-  app.get("/api/books/:bookId/:authorId", getKnexUserHandler);
+  app.get("/api/books/:bookId/:authorId", getBookHandler);
 
   app.post("/user", createUserHandler);
 }
